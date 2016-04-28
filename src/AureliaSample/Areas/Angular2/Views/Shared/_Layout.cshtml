@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AureliaSample</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/jspm_packages/github/twbs/bootstrap@3.3.2/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/jspm_packages/github/twbs/bootstrap@3.3.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body >
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-route-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">AureliaSample</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-route-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-route-area="Angular2" asp-controller="Home" asp-action="Index">Angular2</a></li>
+                    <li><a asp-route-area="Aurelia" asp-controller="Home" asp-action="Index">Aurelia</a></li>
+                    <li><a asp-route-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-route-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2016 - Angular2Sample</p>
+        </footer>
+    </div>
+
+    <script src="~/jspm_packages/npm/bluebird@3.3.5/js/browser/bluebird.js"></script>
+    <script src="~/jspm_packages/system.js"></script>
+    <script src="~/config.js"></script>
+    <script>
+        //System.import("js/site");
+        SystemJS.import('aurelia-bootstrapper');
+        //System.import('')
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,1 @@
+module.exports = require("github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive");

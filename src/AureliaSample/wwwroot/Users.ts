@@ -1,0 +1,26 @@
+﻿import {autoinject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+import {LogManager} from 'aurelia-framework';
+import 'fetch';
+
+@autoinject
+export class Users {
+    heading: string = 'Github Users';
+    users: any[] = [];
+
+    constructor(private http: HttpClient) {
+        http.configure(config => {
+            config
+                .useStandardConfiguration()
+                .withBaseUrl('https://api.github.com/');
+        });
+    }
+
+    activate() {
+        var temp = LogManager.getLogger(0);
+        temp.info('test - users');
+        return this.http.fetch('users')
+            .then(response => response.json())
+            .then(users => this.users = users);
+    }
+}
